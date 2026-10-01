@@ -1,0 +1,2932 @@
+```html
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b0a09">
+<title>کافه کیامیر | منوی دیجیتال</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+
+:root{
+  --bg:#090807;
+  --bg2:#15110d;
+  --panel:rgba(29,25,21,.88);
+  --gold:#e8b866;
+  --gold2:#c98c35;
+  --cream:#fff1d2;
+  --muted:#b9aa91;
+  --line:rgba(232,184,102,.20);
+  --green:#82c98b;
+  --red:#d97878;
+  --shadow:0 25px 80px rgba(0,0,0,.45);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Vazirmatn,Tahoma,sans-serif;
+  color:var(--cream);
+  background:
+    radial-gradient(circle at 10% 10%,rgba(232,184,102,.12),transparent 25%),
+    radial-gradient(circle at 90% 20%,rgba(104,72,35,.14),transparent 25%),
+    linear-gradient(135deg,#090807,#17120d 48%,#090807);
+  overflow-x:hidden;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+  opacity:.2;
+  background-image:
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:70px 70px;
+}
+
+button,
+input{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+
+#cursorGlow{
+  position:fixed;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:2;
+  background:
+    radial-gradient(circle,rgba(232,184,102,.13),transparent 68%);
+  transform:translate(-50%,-50%);
+}
+
+#particles{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  overflow:hidden;
+}
+
+.particle{
+  position:absolute;
+  width:4px;
+  height:4px;
+  background:var(--gold);
+  border-radius:50%;
+  opacity:.4;
+  animation:float linear infinite;
+}
+
+@keyframes float{
+  0%{
+    transform:translateY(110vh) scale(.5);
+    opacity:0;
+  }
+
+  15%{
+    opacity:.55;
+  }
+
+  85%{
+    opacity:.3;
+  }
+
+  100%{
+    transform:
+      translateY(-15vh)
+      translateX(80px)
+      scale(1.2);
+    opacity:0;
+  }
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+  position:relative;
+  z-index:3;
+}
+
+/* HERO */
+
+header{
+  min-height:80vh;
+  display:grid;
+  place-items:center;
+  text-align:center;
+}
+
+.hero{
+  padding:75px 0 35px;
+  animation:heroIn 1.1s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes heroIn{
+  from{
+    opacity:0;
+    transform:translateY(35px) scale(.97);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.logo{
+  width:105px;
+  height:105px;
+  margin:auto;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:48px;
+  box-shadow:
+    0 0 0 12px rgba(232,184,102,.05),
+    0 0 55px rgba(232,184,102,.2);
+  animation:pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse{
+  50%{
+    box-shadow:
+      0 0 0 18px rgba(232,184,102,.02),
+      0 0 80px rgba(232,184,102,.28);
+    transform:translateY(-4px);
+  }
+}
+
+h1{
+  font-size:clamp(42px,8vw,82px);
+  margin:20px 0 4px;
+  letter-spacing:-2px;
+}
+
+.gold{
+  color:var(--gold);
+  text-shadow:0 0 35px rgba(232,184,102,.2);
+}
+
+.subtitle{
+  color:var(--muted);
+  font-size:clamp(16px,2.4vw,22px);
+}
+
+.scroll{
+  margin-top:45px;
+  display:inline-flex;
+  flex-direction:column;
+  gap:8px;
+  align-items:center;
+  color:var(--muted);
+  font-size:13px;
+  text-decoration:none;
+}
+
+.mouse{
+  width:24px;
+  height:38px;
+  border:1px solid var(--gold);
+  border-radius:15px;
+  position:relative;
+}
+
+.mouse:after{
+  content:"";
+  position:absolute;
+  width:3px;
+  height:7px;
+  background:var(--gold);
+  border-radius:5px;
+  left:50%;
+  top:7px;
+  transform:translateX(-50%);
+  animation:wheel 1.5s infinite;
+}
+
+@keyframes wheel{
+  to{
+    transform:translate(-50%,14px);
+    opacity:0;
+  }
+}
+
+/* SECTION */
+
+.section{
+  padding:60px 0;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:32px;
+}
+
+.section-title h2{
+  font-size:34px;
+  margin:0 0 7px;
+}
+
+.section-title p{
+  color:var(--muted);
+  margin:0;
+}
+
+/* MENU */
+
+.menu-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+.panel{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(38,33,27,.9),
+      rgba(17,15,13,.92)
+    );
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:26px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(16px);
+  position:relative;
+  overflow:hidden;
+}
+
+.panel:after{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  background:rgba(232,184,102,.05);
+  filter:blur(30px);
+  left:-90px;
+  bottom:-90px;
+  pointer-events:none;
+}
+
+.item{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:17px 0;
+  border-bottom:1px dashed rgba(255,241,210,.13);
+  position:relative;
+  z-index:2;
+  transition:.25s ease;
+  border-radius:15px;
+}
+
+.item:last-child{
+  border-bottom:0;
+}
+
+.item:hover{
+  background:rgba(232,184,102,.035);
+}
+
+.item.selected{
+  background:rgba(130,201,139,.06);
+}
+
+.icon{
+  width:48px;
+  height:48px;
+  flex:none;
+  display:grid;
+  place-items:center;
+  border-radius:15px;
+  background:rgba(232,184,102,.09);
+  font-size:25px;
+}
+
+.item-main{
+  flex:1;
+  min-width:0;
+}
+
+.item-name{
+  font-size:18px;
+  font-weight:800;
+}
+
+.item-desc{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:3px;
+}
+
+.price{
+  font-weight:800;
+  color:var(--gold);
+  white-space:nowrap;
+  font-size:14px;
+}
+
+/* دکمه افزودن جدید */
+
+.add-btn{
+  flex:none;
+  min-width:96px;
+  border:1px solid rgba(232,184,102,.4);
+  color:var(--gold);
+  background:rgba(232,184,102,.07);
+  border-radius:12px;
+  padding:9px 12px;
+  transition:.25s;
+  position:relative;
+  z-index:5;
+  touch-action:manipulation;
+}
+
+.add-btn:hover{
+  background:var(--gold);
+  color:#17100a;
+  transform:translateY(-2px);
+}
+
+.add-btn:active{
+  transform:scale(.95);
+}
+
+.add-btn.selected{
+  color:#10170f;
+  background:linear-gradient(
+    135deg,
+    #bde6a7,
+    #70b978
+  );
+  border-color:#9bd691;
+}
+
+.add-btn .btn-count{
+  display:inline-block;
+  margin-right:5px;
+  font-weight:900;
+}
+
+/* PACKAGES */
+
+.packages{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.card{
+  position:relative;
+  padding:24px 18px 18px;
+  border:1px solid var(--line);
+  border-radius:25px;
+  background:
+    linear-gradient(
+      160deg,
+      rgba(40,35,29,.92),
+      rgba(14,13,12,.94)
+    );
+  box-shadow:0 15px 45px rgba(0,0,0,.35);
+  overflow:hidden;
+  transition:.25s;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(232,184,102,.5);
+  box-shadow:0 25px 70px rgba(0,0,0,.55);
+}
+
+.card .shine{
+  position:absolute;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:rgba(232,184,102,.1);
+  filter:blur(20px);
+  right:-60px;
+  top:-60px;
+  pointer-events:none;
+}
+
+.badge{
+  font-size:11px;
+  color:var(--gold);
+  letter-spacing:1px;
+}
+
+.card h3{
+  font-size:25px;
+  margin:8px 0;
+}
+
+.price-big{
+  font-size:21px;
+  font-weight:900;
+  color:var(--gold);
+  margin:13px 0 17px;
+}
+
+.card ul{
+  list-style:none;
+  padding:0;
+  margin:0 0 17px;
+  color:#ddd0b9;
+  font-size:13px;
+  line-height:2;
+}
+
+.card li:before{
+  content:"✦";
+  color:var(--gold);
+  margin-left:8px;
+}
+
+.package-add{
+  width:100%;
+  border:0;
+  color:#1a130a;
+  background:linear-gradient(
+    135deg,
+    #f1ca82,
+    #c88f38
+  );
+  font-weight:900;
+  padding:12px;
+  border-radius:12px;
+  transition:.25s;
+  position:relative;
+  z-index:5;
+  touch-action:manipulation;
+}
+
+.package-add:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(200,143,56,.25);
+}
+
+.package-add:active{
+  transform:scale(.97);
+}
+
+.package-add.selected{
+  background:linear-gradient(
+    135deg,
+    #bde6a7,
+    #70b978
+  );
+}
+
+/* ORDER */
+
+.order-section{
+  padding:70px 0 35px;
+  scroll-margin-top:20px;
+}
+
+.order-box{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(44,37,28,.97),
+      rgba(17,14,12,.97)
+    );
+  border:1px solid rgba(232,184,102,.4);
+  border-radius:32px;
+  padding:28px;
+  box-shadow:
+    0 30px 100px rgba(0,0,0,.55),
+    0 0 55px rgba(232,184,102,.06);
+  position:relative;
+  overflow:hidden;
+}
+
+.order-box:before{
+  content:"";
+  position:absolute;
+  top:-100px;
+  left:-100px;
+  width:250px;
+  height:250px;
+  background:rgba(232,184,102,.08);
+  border-radius:50%;
+  filter:blur(35px);
+  pointer-events:none;
+}
+
+.order-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:20px;
+  position:relative;
+  z-index:2;
+}
+
+.order-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.order-icon{
+  width:52px;
+  height:52px;
+  display:grid;
+  place-items:center;
+  border-radius:16px;
+  background:rgba(232,184,102,.1);
+  font-size:25px;
+}
+
+.order-title h2{
+  margin:0;
+  font-size:28px;
+}
+
+.order-title p{
+  margin:3px 0 0;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.clear-btn{
+  border:1px solid rgba(217,120,120,.35);
+  color:#efaaaa;
+  background:rgba(217,120,120,.06);
+  padding:9px 13px;
+  border-radius:11px;
+}
+
+.clear-btn:hover{
+  background:rgba(217,120,120,.14);
+}
+
+.empty{
+  text-align:center;
+  color:var(--muted);
+  padding:38px 15px;
+  border:1px dashed rgba(232,184,102,.18);
+  border-radius:20px;
+  position:relative;
+}
+
+.empty .big{
+  font-size:42px;
+  display:block;
+  margin-bottom:7px;
+}
+
+.order-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  position:relative;
+}
+
+.order-row{
+  display:grid;
+  grid-template-columns:1fr auto auto auto;
+  gap:12px;
+  align-items:center;
+  padding:13px 15px;
+  border-radius:16px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.05);
+  animation:rowIn .35s ease;
+}
+
+@keyframes rowIn{
+  from{
+    opacity:0;
+    transform:translateX(18px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.order-name{
+  font-weight:800;
+}
+
+.order-unit{
+  font-size:11px;
+  color:var(--muted);
+  margin-top:3px;
+}
+
+.qty{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  background:rgba(0,0,0,.22);
+  border-radius:10px;
+  padding:3px;
+}
+
+.qty button{
+  width:28px;
+  height:28px;
+  border:0;
+  border-radius:8px;
+  color:var(--cream);
+  background:rgba(232,184,102,.1);
+}
+
+.qty button:hover{
+  background:rgba(232,184,102,.25);
+}
+
+.qty span{
+  min-width:25px;
+  text-align:center;
+  font-weight:800;
+}
+
+.row-total{
+  font-weight:900;
+  color:var(--gold);
+  white-space:nowrap;
+}
+
+.remove{
+  width:32px;
+  height:32px;
+  border:0;
+  color:#e69a9a;
+  background:rgba(217,120,120,.08);
+  border-radius:9px;
+}
+
+.remove:hover{
+  background:rgba(217,120,120,.18);
+}
+
+/* ORDER BOTTOM */
+
+.order-bottom{
+  margin-top:20px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.customer-fields{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.field label{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.field input{
+  width:100%;
+  background:rgba(0,0,0,.25);
+  color:var(--cream);
+  border:1px solid rgba(232,184,102,.18);
+  border-radius:12px;
+  padding:12px;
+  outline:none;
+}
+
+.field input:focus{
+  border-color:rgba(232,184,102,.65);
+  box-shadow:0 0 0 3px rgba(232,184,102,.07);
+}
+
+.total-box{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-end;
+  gap:13px;
+}
+
+.total-line{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  color:var(--muted);
+}
+
+.total{
+  font-size:29px;
+  color:var(--gold);
+  font-weight:900;
+}
+
+.submit-order{
+  width:100%;
+  border:0;
+  padding:15px;
+  border-radius:14px;
+  color:#171009;
+  background:linear-gradient(
+    135deg,
+    #f5d38d,
+    #c88c34
+  );
+  font-size:16px;
+  font-weight:900;
+  box-shadow:0 10px 35px rgba(200,143,56,.2);
+  transition:.25s;
+}
+
+.submit-order:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 45px rgba(200,143,56,.32);
+}
+
+.submit-order:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+  transform:none;
+}
+
+.notice{
+  margin-top:12px;
+  font-size:11px;
+  color:var(--muted);
+  text-align:center;
+}
+
+/* MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(10px);
+  display:none;
+  place-items:center;
+  z-index:60;
+  padding:18px;
+}
+
+.modal.open{
+  display:grid;
+}
+
+.modal-box{
+  width:min(600px,100%);
+  background:#181410;
+  border:1px solid rgba(232,184,102,.35);
+  border-radius:28px;
+  padding:28px;
+  box-shadow:0 30px 100px #000;
+  animation:pop .3s ease;
+}
+
+@keyframes pop{
+  from{
+    opacity:0;
+    transform:scale(.92) translateY(15px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.modal-head h2{
+  margin:0;
+}
+
+.close{
+  border:0;
+  background:transparent;
+  color:var(--cream);
+  font-size:28px;
+}
+
+.confirm-list{
+  max-height:300px;
+  overflow:auto;
+  margin:18px 0;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.confirm-item{
+  display:flex;
+  justify-content:space-between;
+  padding:10px;
+  border-radius:10px;
+  background:rgba(255,255,255,.04);
+}
+
+.confirm-actions{
+  display:flex;
+  gap:10px;
+}
+
+.confirm-actions button{
+  flex:1;
+  padding:13px;
+  border-radius:12px;
+  border:0;
+  font-weight:800;
+}
+
+.confirm{
+  background:linear-gradient(
+    135deg,
+    #f1ca82,
+    #c88f38
+  );
+  color:#1a130a;
+}
+
+.cancel{
+  background:rgba(255,255,255,.06);
+  color:var(--cream);
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  bottom:25px;
+  left:50%;
+  transform:translateX(-50%) translateY(90px);
+  background:#f1ca82;
+  color:#1a130a;
+  padding:12px 18px;
+  border-radius:13px;
+  font-weight:800;
+  z-index:80;
+  transition:.35s;
+  box-shadow:0 10px 35px rgba(0,0,0,.4);
+  max-width:90%;
+  text-align:center;
+}
+
+.toast.show{
+  transform:translateX(-50%) translateY(0);
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  padding:55px 0 80px;
+  color:var(--muted);
+}
+
+footer strong{
+  display:block;
+  color:var(--cream);
+  font-size:28px;
+  margin-bottom:6px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+  .packages{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .order-bottom{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:700px){
+  .menu-grid{
+    grid-template-columns:1fr;
+  }
+
+  .order-row{
+    grid-template-columns:1fr auto auto;
+  }
+
+  .row-total{
+    grid-column:2;
+  }
+
+  .remove{
+    grid-column:3;
+    grid-row:1;
+  }
+}
+
+@media(max-width:560px){
+  .packages{
+    grid-template-columns:1fr;
+  }
+
+  .panel,
+  .order-box{
+    padding:20px;
+  }
+
+  .customer-fields{
+    grid-template-columns:1fr;
+  }
+
+  .item{
+    gap:9px;
+    flex-wrap:wrap;
+  }
+
+  .item-main{
+    min-width:calc(100% - 65px);
+  }
+
+  .price{
+    margin-right:57px;
+  }
+
+  .add-btn{
+    margin-right:auto;
+  }
+
+  .item-name{
+    font-size:16px;
+  }
+
+  .price{
+    font-size:12px;
+  }
+
+  .add-btn{
+    padding:8px 9px;
+    min-width:90px;
+  }
+
+  .order-title h2{
+    font-size:23px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,
+  *:before,
+  *:after{
+    animation:none!important;
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="cursorGlow"></div>
+<div id="particles"></div>
+
+<header>
+  <div class="container hero">
+
+    <div class="logo">☕</div>
+
+    <h1>
+      کافه <span class="gold">کیامیر</span>
+    </h1>
+
+    <div class="subtitle">
+      منوی دیجیتال • انتخاب کنید، سفارش را بسازید، گارسون ثبت می‌کند
+    </div>
+
+    <a href="#menu" class="scroll">
+      <span>مشاهده منو</span>
+      <span class="mouse"></span>
+    </a>
+
+  </div>
+</header>
+
+<main id="menu" class="container">
+
+<!-- =========================
+     نوشیدنی‌ها و خوراکی‌ها
+========================= -->
+
+<section class="section">
+
+  <div class="section-title">
+    <h2>☕ نوشیدنی‌ها و خوراکی‌ها</h2>
+    <p>
+      روی «افزودن» بزنید یا خود آیتم را انتخاب کنید.
+    </p>
+  </div>
+
+  <div class="menu-grid">
+
+    <!-- ستون اول -->
+
+    <div class="panel">
+
+      <div class="item selectable-item"
+           data-name="چای کلاسیک"
+           data-price="30000">
+
+        <div class="icon">🍵</div>
+
+        <div class="item-main">
+          <div class="item-name">چای کلاسیک</div>
+          <div class="item-desc">گرم و آرامش‌بخش</div>
+        </div>
+
+        <div class="price">
+          ۳۰,۰۰۰ تومان
+        </div>
+
+        <button
+          type="button"
+          class="add-btn"
+          data-name="چای کلاسیک"
+          data-price="30000">
+          + افزودن
+        </button>
+
+      </div>
+
+
+      <div class="item selectable-item"
+           data-name="قهوه فوری"
+           data-price="50000">
+
+        <div class="icon">☕</div>
+
+        <div class="item-main">
+          <div class="item-name">قهوه فوری</div>
+          <div class="item-desc">سریع، ساده و خوش‌عطر</div>
+        </div>
+
+        <div class="price">
+          ۵۰,۰۰۰ تومان
+        </div>
+
+        <button
+          type="button"
+          class="add-btn"
+          data-name="قهوه فوری"
+          data-price="50000">
+          + افزودن
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- ستون دوم -->
+
+    <div class="panel">
+
+      <div class="item selectable-item"
+           data-name="کیک روز"
+           data-price="60000">
+
+        <div class="icon">🍰</div>
+
+        <div class="item-main">
+          <div class="item-name">کیک روز</div>
+          <div class="item-desc">انتخاب تازه‌ی روز</div>
+        </div>
+
+        <div class="price">
+          ۶۰,۰۰۰ تومان
+        </div>
+
+        <button
+          type="button"
+          class="add-btn"
+          data-name="کیک روز"
+          data-price="60000">
+          + افزودن
+        </button>
+
+      </div>
+
+
+      <div class="item selectable-item"
+           data-name="بیسکویت"
+           data-price="30000">
+
+        <div class="icon">🍪</div>
+
+        <div class="item-main">
+          <div class="item-name">بیسکویت</div>
+        </div>
+
+        <div class="price">
+          ۳۰,۰۰۰ تومان
+        </div>
+
+        <button
+          type="button"
+          class="add-btn"
+          data-name="بیسکویت"
+          data-price="30000">
+          + افزودن
+        </button>
+
+      </div>
+
+
+      <div class="item selectable-item"
+           data-name="تخمه"
+           data-price="40000">
+
+        <div class="icon">🌻</div>
+
+        <div class="item-main">
+          <div class="item-name">تخمه</div>
+        </div>
+
+        <div class="price">
+          ۴۰,۰۰۰ تومان
+        </div>
+
+        <button
+          type="button"
+          class="add-btn"
+          data-name="تخمه"
+          data-price="40000">
+          + افزودن
+        </button>
+
+      </div>
+
+
+      <div class="item selectable-item"
+           data-name="چیپس"
+           data-price="35000">
+
+        <div class="icon">🥔</div>
+
+        <div class="item-main">
+          <div class="item-name">چیپس</div>
+        </div>
+
+        <div class="price">
+          ۳۵,۰۰۰ تومان
+        </div>
+
+        <button
+          type="button"
+          class="add-btn"
+          data-name="چیپس"
+          data-price="35000">
+          + افزودن
+        </button>
+
+      </div>
+
+
+      <div class="item selectable-item"
+           data-name="پفک"
+           data-price="35000">
+
+        <div class="icon">🧀</div>
+
+        <div class="item-main">
+          <div class="item-name">پفک</div>
+        </div>
+
+        <div class="price">
+          ۳۵,۰۰۰ تومان
+        </div>
+
+        <button
+          type="button"
+          class="add-btn"
+          data-name="پفک"
+          data-price="35000">
+          + افزودن
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     پکیج‌ها
+========================= -->
+
+<section class="section">
+
+  <div class="section-title">
+    <h2>👥 پکیج‌های کافه</h2>
+    <p>
+      با یک کلیک کل پکیج به سفارش اضافه می‌شود.
+    </p>
+  </div>
+
+  <div class="packages">
+
+    <!-- دورهمی -->
+
+    <article class="card">
+
+      <span class="shine"></span>
+
+      <div class="badge">
+        COZY
+      </div>
+
+      <h3>
+        دورهمی
+      </h3>
+
+      <div class="price-big">
+        ۱۸۰,۰۰۰ تومان
+      </div>
+
+      <ul>
+        <li>۲ عدد چای</li>
+        <li>۲ عدد قهوه</li>
+        <li>۱ عدد چیپس</li>
+        <li>۱ عدد پفک</li>
+        <li>۱ بسته بیسکویت</li>
+      </ul>
+
+      <button
+        type="button"
+        class="package-add"
+        data-package="دورهمی"
+        data-price="180000"
+        data-items='[
+          {"name":"چای کلاسیک","qty":2},
+          {"name":"قهوه فوری","qty":2},
+          {"name":"چیپس","qty":1},
+          {"name":"پفک","qty":1},
+          {"name":"بیسکویت","qty":1}
+        ]'>
+        + افزودن پکیج
+      </button>
+
+    </article>
+
+
+    <!-- خانوادگی -->
+
+    <article class="card">
+
+      <span class="shine"></span>
+
+      <div class="badge">
+        FAMILY
+      </div>
+
+      <h3>
+        خانوادگی
+      </h3>
+
+      <div class="price-big">
+        ۳۵۰,۰۰۰ تومان
+      </div>
+
+      <ul>
+        <li>۴ عدد چای</li>
+        <li>۴ عدد قهوه</li>
+        <li>۱ عدد کیک</li>
+        <li>۱ عدد چیپس</li>
+        <li>۱ عدد پفک</li>
+        <li>۱ عدد تخمه</li>
+        <li>۱ بسته بیسکویت</li>
+      </ul>
+
+      <button
+        type="button"
+        class="package-add"
+        data-package="خانوادگی"
+        data-price="350000"
+        data-items='[
+          {"name":"چای کلاسیک","qty":4},
+          {"name":"قهوه فوری","qty":4},
+          {"name":"کیک روز","qty":1},
+          {"name":"چیپس","qty":1},
+          {"name":"پفک","qty":1},
+          {"name":"تخمه","qty":1},
+          {"name":"بیسکویت","qty":1}
+        ]'>
+        + افزودن پکیج
+      </button>
+
+    </article>
+
+
+    <!-- دسته جمعی -->
+
+    <article class="card">
+
+      <span class="shine"></span>
+
+      <div class="badge">
+        GROUP
+      </div>
+
+      <h3>
+        دسته‌جمعی
+      </h3>
+
+      <div class="price-big">
+        ۵۵۰,۰۰۰ تومان
+      </div>
+
+      <ul>
+        <li>۶ عدد چای</li>
+        <li>۶ عدد قهوه</li>
+        <li>۲ عدد کیک</li>
+        <li>۲ عدد چیپس</li>
+        <li>۲ عدد پفک</li>
+        <li>۲ عدد تخمه</li>
+        <li>۲ بسته بیسکویت</li>
+      </ul>
+
+      <button
+        type="button"
+        class="package-add"
+        data-package="دسته‌جمعی"
+        data-price="550000"
+        data-items='[
+          {"name":"چای کلاسیک","qty":6},
+          {"name":"قهوه فوری","qty":6},
+          {"name":"کیک روز","qty":2},
+          {"name":"چیپس","qty":2},
+          {"name":"پفک","qty":2},
+          {"name":"تخمه","qty":2},
+          {"name":"بیسکویت","qty":2}
+        ]'>
+        + افزودن پکیج
+      </button>
+
+    </article>
+
+
+    <!-- پارتی -->
+
+    <article class="card">
+
+      <span class="shine"></span>
+
+      <div class="badge">
+        PARTY
+      </div>
+
+      <h3>
+        پارتی
+      </h3>
+
+      <div class="price-big">
+        ۸۵۰,۰۰۰ تومان
+      </div>
+
+      <ul>
+        <li>۱۰ عدد چای</li>
+        <li>۱۰ عدد قهوه</li>
+        <li>۳ عدد کیک</li>
+        <li>۲ عدد چیپس</li>
+        <li>۲ عدد پفک</li>
+        <li>۲ عدد تخمه</li>
+        <li>۲ بسته بیسکویت</li>
+      </ul>
+
+      <button
+        type="button"
+        class="package-add"
+        data-package="پارتی"
+        data-price="850000"
+        data-items='[
+          {"name":"چای کلاسیک","qty":10},
+          {"name":"قهوه فوری","qty":10},
+          {"name":"کیک روز","qty":3},
+          {"name":"چیپس","qty":2},
+          {"name":"پفک","qty":2},
+          {"name":"تخمه","qty":2},
+          {"name":"بیسکویت","qty":2}
+        ]'>
+        + افزودن پکیج
+      </button>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     سفارش
+========================= -->
+
+<section
+  class="order-section"
+  id="orderSection">
+
+  <div class="order-box">
+
+    <div class="order-header">
+
+      <div class="order-title">
+
+        <div class="order-icon">
+          🧾
+        </div>
+
+        <div>
+          <h2>
+            سفارش انتخاب‌شده
+          </h2>
+
+          <p>
+            آیتم‌های انتخاب‌شده در این قسمت نمایش داده می‌شوند.
+          </p>
+        </div>
+
+      </div>
+
+      <button
+        type="button"
+        class="clear-btn"
+        id="clearOrder">
+        پاک کردن همه
+      </button>
+
+    </div>
+
+
+    <div
+      id="emptyOrder"
+      class="empty">
+
+      <span class="big">
+        🛒
+      </span>
+
+      هنوز چیزی انتخاب نشده است.
+      <br>
+
+      از منو آیتم یا پکیج موردنظر را اضافه کنید.
+
+    </div>
+
+
+    <div
+      id="orderList"
+      class="order-list">
+    </div>
+
+
+    <div class="order-bottom">
+
+      <div class="customer-fields">
+
+        <div class="field">
+
+          <label for="tableNumber">
+            شماره میز
+          </label>
+
+          <input
+            id="tableNumber"
+            type="text"
+            inputmode="numeric"
+            placeholder="مثلاً ۱۲">
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="customerName">
+            نام مشتری / میز
+          </label>
+
+          <input
+            id="customerName"
+            type="text"
+            placeholder="اختیاری">
+
+        </div>
+
+
+        <div
+          class="field"
+          style="grid-column:1/-1">
+
+          <label for="orderNote">
+            توضیحات سفارش
+          </label>
+
+          <input
+            id="orderNote"
+            type="text"
+            placeholder="مثلاً قهوه بدون شکر">
+
+        </div>
+
+      </div>
+
+
+      <div class="total-box">
+
+        <div class="total-line">
+
+          <span>
+            تعداد اقلام
+          </span>
+
+          <strong id="totalCount">
+            ۰
+          </strong>
+
+        </div>
+
+
+        <div class="total-line">
+
+          <span>
+            مبلغ کل
+          </span>
+
+          <strong
+            class="total"
+            id="totalPrice">
+            ۰ تومان
+          </strong>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="submit-order"
+          id="submitOrder"
+          disabled>
+
+          ثبت نهایی سفارش توسط گارسون
+
+        </button>
+
+
+        <div class="notice">
+
+          پس از فشردن این دکمه،
+          خلاصه سفارش برای تأیید گارسون نمایش داده می‌شود.
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <strong>
+    کافه کیامیر
+  </strong>
+
+  لحظات خوب، طعم‌های ساده و دوست‌داشتنی ☕
+
+</footer>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div
+  class="modal"
+  id="confirmModal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <h2>
+        🧑‍🍳 تأیید سفارش توسط گارسون
+      </h2>
+
+      <button
+        type="button"
+        class="close"
+        id="closeModal">
+        ×
+      </button>
+
+    </div>
+
+
+    <p
+      style="
+        color:var(--muted);
+        font-size:13px
+      ">
+
+      لطفاً سفارش را با مشتری بررسی کنید
+      و سپس ثبت نهایی را بزنید.
+
+    </p>
+
+
+    <div
+      id="confirmList"
+      class="confirm-list">
+    </div>
+
+
+    <div
+      style="
+        display:flex;
+        justify-content:space-between;
+        margin-bottom:18px">
+
+      <span>
+        مبلغ نهایی:
+      </span>
+
+      <strong
+        class="gold"
+        id="confirmTotal">
+        ۰ تومان
+      </strong>
+
+    </div>
+
+
+    <div class="confirm-actions">
+
+      <button
+        type="button"
+        class="cancel"
+        id="cancelConfirm">
+        بازگشت
+      </button>
+
+      <button
+        type="button"
+        class="confirm"
+        id="finalConfirm">
+        ✓ ثبت سفارش
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+  class="toast"
+  id="toast">
+</div>
+
+
+<script>
+
+/* =========================================================
+   سیستم سفارش
+========================================================= */
+
+const STORAGE_KEY = "kiamir_cafe_order_v2";
+
+const order = new Map();
+
+
+/* =========================================================
+   عناصر
+========================================================= */
+
+const orderList =
+  document.getElementById("orderList");
+
+const emptyOrder =
+  document.getElementById("emptyOrder");
+
+const submitOrder =
+  document.getElementById("submitOrder");
+
+const modal =
+  document.getElementById("confirmModal");
+
+
+/* =========================================================
+   تبدیل اعداد
+========================================================= */
+
+function faNumber(value){
+
+  return Number(value).toLocaleString("fa-IR");
+
+}
+
+
+function money(value){
+
+  return faNumber(value) + " تومان";
+
+}
+
+
+/* =========================================================
+   ذخیره سفارش
+========================================================= */
+
+function saveOrder(){
+
+  try{
+
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(
+        Array.from(order.entries())
+      )
+    );
+
+  }catch(error){
+
+    console.warn(
+      "ذخیره سفارش انجام نشد:",
+      error
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   بازیابی سفارش
+========================================================= */
+
+function loadOrder(){
+
+  try{
+
+    const saved =
+      localStorage.getItem(STORAGE_KEY);
+
+    if(!saved) return;
+
+    const parsed =
+      JSON.parse(saved);
+
+    if(!Array.isArray(parsed)) return;
+
+    parsed.forEach(([key,item])=>{
+
+      if(
+        item &&
+        item.name &&
+        Number(item.price) >= 0 &&
+        Number(item.qty) > 0
+      ){
+
+        order.set(
+          key,
+          {
+            ...item,
+            price:Number(item.price),
+            qty:Number(item.qty)
+          }
+        );
+
+      }
+
+    });
+
+  }catch(error){
+
+    console.warn(
+      "خواندن سفارش ذخیره‌شده انجام نشد:",
+      error
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   HTML امن
+========================================================= */
+
+function escapeHtml(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================================================
+   اضافه کردن آیتم
+========================================================= */
+
+function addItem(
+  name,
+  price
+){
+
+  price = Number(price);
+
+  if(
+    !name ||
+    !Number.isFinite(price)
+  ){
+
+    return;
+
+  }
+
+
+  if(order.has(name)){
+
+    const item =
+      order.get(name);
+
+    item.qty += 1;
+
+  }else{
+
+    order.set(
+      name,
+      {
+        name:name,
+        price:price,
+        qty:1,
+        type:"item"
+      }
+    );
+
+  }
+
+
+  saveOrder();
+  renderOrder();
+  updateMenuButtons(name);
+
+  showToast(
+    `${name} به سفارش اضافه شد ✓`
+  );
+
+}
+
+
+/* =========================================================
+   اضافه کردن پکیج
+========================================================= */
+
+function addPackage(
+  packageName,
+  packagePrice,
+  items
+){
+
+  packagePrice =
+    Number(packagePrice);
+
+
+  if(
+    !packageName ||
+    !Number.isFinite(packagePrice)
+  ){
+
+    return;
+
+  }
+
+
+  const key =
+    "پکیج: " + packageName;
+
+
+  if(order.has(key)){
+
+    order.get(key).qty++;
+
+  }else{
+
+    order.set(
+      key,
+      {
+        name:key,
+        price:packagePrice,
+        qty:1,
+        type:"package",
+        items:items
+      }
+    );
+
+  }
+
+
+  saveOrder();
+  renderOrder();
+  updatePackageButtons();
+
+
+  showToast(
+    `پکیج ${packageName} اضافه شد ✓`
+  );
+
+}
+
+
+/* =========================================================
+   دکمه‌های آیتم
+========================================================= */
+
+document
+  .querySelectorAll(".add-btn")
+  .forEach(button=>{
+
+    button.addEventListener(
+      "click",
+      function(event){
+
+        event.stopPropagation();
+
+        addItem(
+          this.dataset.name,
+          this.dataset.price
+        );
+
+      }
+    );
+
+  });
+
+
+/* =========================================================
+   انتخاب با کلیک روی خود آیتم
+========================================================= */
+
+document
+  .querySelectorAll(".selectable-item")
+  .forEach(item=>{
+
+    item.addEventListener(
+      "click",
+      function(event){
+
+        if(
+          event.target.closest(".add-btn")
+        ){
+
+          return;
+
+        }
+
+        addItem(
+          this.dataset.name,
+          this.dataset.price
+        );
+
+      }
+    );
+
+  });
+
+
+/* =========================================================
+   دکمه‌های پکیج
+========================================================= */
+
+document
+  .querySelectorAll(".package-add")
+  .forEach(button=>{
+
+    button.addEventListener(
+      "click",
+      function(){
+
+        let items = [];
+
+        try{
+
+          items =
+            JSON.parse(
+              this.dataset.items
+            );
+
+        }catch(error){
+
+          console.error(
+            "اطلاعات پکیج اشتباه است:",
+            error
+          );
+
+          return;
+
+        }
+
+
+        addPackage(
+          this.dataset.package,
+          this.dataset.price,
+          items
+        );
+
+      }
+    );
+
+  });
+
+
+/* =========================================================
+   وضعیت دکمه‌های منو
+========================================================= */
+
+function updateMenuButtons(){
+
+  document
+    .querySelectorAll(".add-btn")
+    .forEach(button=>{
+
+      const name =
+        button.dataset.name;
+
+      const item =
+        order.get(name);
+
+
+      if(item){
+
+        button.classList.add("selected");
+
+        button.innerHTML =
+          `✓ اضافه شد <span class="btn-count">${faNumber(item.qty)}</span>`;
+
+      }else{
+
+        button.classList.remove("selected");
+
+        button.textContent =
+          "+ افزودن";
+
+      }
+
+    });
+
+
+  updatePackageButtons();
+
+}
+
+
+/* =========================================================
+   وضعیت پکیج‌ها
+========================================================= */
+
+function updatePackageButtons(){
+
+  document
+    .querySelectorAll(".package-add")
+    .forEach(button=>{
+
+      const key =
+        "پکیج: " +
+        button.dataset.package;
+
+      const item =
+        order.get(key);
+
+
+      if(item){
+
+        button.classList.add("selected");
+
+        button.textContent =
+          `✓ پکیج اضافه شد (${faNumber(item.qty)})`;
+
+      }else{
+
+        button.classList.remove("selected");
+
+        button.textContent =
+          "+ افزودن پکیج";
+
+      }
+
+    });
+
+}
+
+
+/* =========================================================
+   نمایش سفارش
+========================================================= */
+
+function renderOrder(){
+
+  orderList.innerHTML = "";
+
+
+  if(order.size === 0){
+
+    emptyOrder.style.display =
+      "block";
+
+    submitOrder.disabled =
+      true;
+
+    updateTotals();
+    updateMenuButtons();
+
+    return;
+
+  }
+
+
+  emptyOrder.style.display =
+    "none";
+
+  submitOrder.disabled =
+    false;
+
+
+  order.forEach(
+    (item,key)=>{
+
+      const row =
+        document.createElement("div");
+
+      row.className =
+        "order-row";
+
+
+      const name =
+        escapeHtml(item.name);
+
+
+      const encodedKey =
+        encodeURIComponent(key);
+
+
+      row.innerHTML = `
+
+        <div>
+
+          <div class="order-name">
+            ${name}
+          </div>
+
+          <div class="order-unit">
+            ${money(item.price)}
+            برای هر عدد
+          </div>
+
+        </div>
+
+
+        <div class="qty">
+
+          <button
+            type="button"
+            class="qty-plus"
+            data-key="${encodedKey}">
+            +
+          </button>
+
+          <span>
+            ${faNumber(item.qty)}
+          </span>
+
+          <button
+            type="button"
+            class="qty-minus"
+            data-key="${encodedKey}">
+            −
+          </button>
+
+        </div>
+
+
+        <div class="row-total">
+          ${money(item.price * item.qty)}
+        </div>
+
+
+        <button
+          type="button"
+          class="remove"
+          data-key="${encodedKey}"
+          title="حذف">
+          ×
+        </button>
+
+      `;
+
+
+      orderList.appendChild(row);
+
+    }
+  );
+
+
+  updateTotals();
+  updateMenuButtons();
+
+}
+
+
+/* =========================================================
+   رویداد دکمه‌های سفارش
+========================================================= */
+
+orderList.addEventListener(
+  "click",
+  function(event){
+
+    const plus =
+      event.target.closest(".qty-plus");
+
+    const minus =
+      event.target.closest(".qty-minus");
+
+    const remove =
+      event.target.closest(".remove");
+
+
+    if(plus){
+
+      const key =
+        decodeURIComponent(
+          plus.dataset.key
+        );
+
+      changeQty(key,1);
+
+      return;
+
+    }
+
+
+    if(minus){
+
+      const key =
+        decodeURIComponent(
+          minus.dataset.key
+        );
+
+      changeQty(key,-1);
+
+      return;
+
+    }
+
+
+    if(remove){
+
+      const key =
+        decodeURIComponent(
+          remove.dataset.key
+        );
+
+      removeItem(key);
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   تغییر تعداد
+========================================================= */
+
+function changeQty(
+  key,
+  delta
+){
+
+  if(!order.has(key)){
+    return;
+  }
+
+
+  const item =
+    order.get(key);
+
+  item.qty += delta;
+
+
+  if(item.qty <= 0){
+
+    order.delete(key);
+
+  }
+
+
+  saveOrder();
+  renderOrder();
+
+}
+
+
+/* =========================================================
+   حذف آیتم
+========================================================= */
+
+function removeItem(key){
+
+  if(!order.has(key)){
+    return;
+  }
+
+
+  const name =
+    order.get(key).name;
+
+
+  order.delete(key);
+
+  saveOrder();
+  renderOrder();
+
+
+  showToast(
+    `${name} از سفارش حذف شد`
+  );
+
+}
+
+
+/* =========================================================
+   جمع سفارش
+========================================================= */
+
+function updateTotals(){
+
+  let count = 0;
+  let total = 0;
+
+
+  order.forEach(item=>{
+
+    count += item.qty;
+
+    total +=
+      item.price * item.qty;
+
+  });
+
+
+  document
+    .getElementById("totalCount")
+    .textContent =
+    faNumber(count);
+
+
+  document
+    .getElementById("totalPrice")
+    .textContent =
+    money(total);
+
+}
+
+
+/* =========================================================
+   مبلغ کل
+========================================================= */
+
+function getTotal(){
+
+  let total = 0;
+
+
+  order.forEach(item=>{
+
+    total +=
+      item.price * item.qty;
+
+  });
+
+
+  return total;
+
+}
+
+
+/* =========================================================
+   رفتن به سفارش
+========================================================= */
+
+function scrollToOrder(){
+
+  setTimeout(()=>{
+
+    document
+      .getElementById("orderSection")
+      .scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+      });
+
+  },100);
+
+}
+
+
+/* =========================================================
+   پاک کردن همه
+========================================================= */
+
+document
+  .getElementById("clearOrder")
+  .addEventListener(
+    "click",
+    function(){
+
+      if(order.size === 0){
+
+        showToast(
+          "سفارش شما خالی است"
+        );
+
+        return;
+
+      }
+
+
+      order.clear();
+
+      saveOrder();
+      renderOrder();
+
+
+      showToast(
+        "همه سفارش‌ها پاک شدند"
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   باز کردن مودال
+========================================================= */
+
+submitOrder.addEventListener(
+  "click",
+  function(){
+
+    if(order.size === 0){
+      return;
+    }
+
+
+    const list =
+      document.getElementById(
+        "confirmList"
+      );
+
+
+    list.innerHTML = "";
+
+
+    order.forEach(item=>{
+
+      const div =
+        document.createElement("div");
+
+      div.className =
+        "confirm-item";
+
+
+      div.innerHTML = `
+
+        <span>
+          ${escapeHtml(item.name)}
+          ×
+          ${faNumber(item.qty)}
+        </span>
+
+        <strong>
+          ${money(item.price * item.qty)}
+        </strong>
+
+      `;
+
+
+      list.appendChild(div);
+
+    });
+
+
+    document
+      .getElementById("confirmTotal")
+      .textContent =
+      money(getTotal());
+
+
+    modal.classList.add("open");
+
+  }
+);
+
+
+/* =========================================================
+   بستن مودال
+========================================================= */
+
+function closeModal(){
+
+  modal.classList.remove("open");
+
+}
+
+
+document
+  .getElementById("closeModal")
+  .addEventListener(
+    "click",
+    closeModal
+  );
+
+
+document
+  .getElementById("cancelConfirm")
+  .addEventListener(
+    "click",
+    closeModal
+  );
+
+
+modal.addEventListener(
+  "click",
+  function(event){
+
+    if(event.target === modal){
+
+      closeModal();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   ثبت نهایی
+========================================================= */
+
+document
+  .getElementById("finalConfirm")
+  .addEventListener(
+    "click",
+    function(){
+
+      const table =
+        document
+          .getElementById("tableNumber")
+          .value
+          .trim();
+
+
+      const customer =
+        document
+          .getElementById("customerName")
+          .value
+          .trim();
+
+
+      const note =
+        document
+          .getElementById("orderNote")
+          .value
+          .trim();
+
+
+      if(!table){
+
+        closeModal();
+
+        const input =
+          document.getElementById(
+            "tableNumber"
+          );
+
+
+        input.focus();
+
+        showToast(
+          "لطفاً شماره میز را وارد کنید"
+        );
+
+        return;
+
+      }
+
+
+      const orderData = {
+
+        table:table,
+
+        customer:customer,
+
+        note:note,
+
+        items:
+          Array.from(
+            order.values()
+          ).map(item=>({
+
+            ...item
+
+          })),
+
+        total:getTotal(),
+
+        createdAt:
+          new Date().toISOString()
+
+      };
+
+
+      /*
+       * در اینجا سفارش آماده ارسال است.
+       *
+       * اگر بعداً بخواهی سفارش مستقیم به
+       * پنل گارسون، تلگرام، واتساپ،
+       * PHP، Node.js، Firebase یا دیتابیس
+       * ارسال شود، همین orderData ارسال می‌شود.
+       */
+
+      console.log(
+        "FINAL ORDER:",
+        orderData
+      );
+
+
+      closeModal();
+
+
+      order.clear();
+
+      saveOrder();
+
+      renderOrder();
+
+
+      document
+        .getElementById("tableNumber")
+        .value = "";
+
+
+      document
+        .getElementById("customerName")
+        .value = "";
+
+
+      document
+        .getElementById("orderNote")
+        .value = "";
+
+
+      showToast(
+        `سفارش میز ${table} با موفقیت ثبت شد ✓`
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   Toast
+========================================================= */
+
+function showToast(message){
+
+  const toast =
+    document.getElementById("toast");
+
+
+  toast.textContent =
+    message;
+
+
+  toast.classList.add(
+    "show"
+  );
+
+
+  clearTimeout(
+    window.toastTimer
+  );
+
+
+  window.toastTimer =
+    setTimeout(()=>{
+
+      toast.classList.remove(
+        "show"
+      );
+
+    },2300);
+
+}
+
+
+/* =========================================================
+   ذرات پس‌زمینه
+========================================================= */
+
+const particles =
+  document.getElementById(
+    "particles"
+  );
+
+
+for(
+  let i = 0;
+  i < 32;
+  i++
+){
+
+  const p =
+    document.createElement("i");
+
+
+  p.className =
+    "particle";
+
+
+  p.style.left =
+    Math.random() * 100 + "%";
+
+
+  p.style.animationDuration =
+    (7 + Math.random() * 12) + "s";
+
+
+  p.style.animationDelay =
+    (-Math.random() * 15) + "s";
+
+
+  particles.appendChild(p);
+
+}
+
+
+/* =========================================================
+   نور موس
+========================================================= */
+
+const glow =
+  document.getElementById(
+    "cursorGlow"
+  );
+
+
+window.addEventListener(
+  "pointermove",
+  event=>{
+
+    glow.style.left =
+      event.clientX + "px";
+
+    glow.style.top =
+      event.clientY + "px";
+
+  },
+  {
+    passive:true
+  }
+);
+
+
+/* =========================================================
+   انیمیشن ورود
+========================================================= */
+
+const observer =
+  new IntersectionObserver(
+    entries=>{
+
+      entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+          entry.target.animate(
+            [
+              {
+                opacity:0,
+                transform:"translateY(30px)"
+              },
+              {
+                opacity:1,
+                transform:"translateY(0)"
+              }
+            ],
+            {
+              duration:700,
+              easing:"cubic-bezier(.2,.8,.2,1)",
+              fill:"forwards"
+            }
+          );
+
+
+          observer.unobserve(
+            entry.target
+          );
+
+        }
+
+      });
+
+    },
+    {
+      threshold:.1
+    }
+  );
+
+
+document
+  .querySelectorAll(
+    ".panel,.card,.order-box"
+  )
+  .forEach(el=>{
+
+    el.style.opacity="0";
+
+    observer.observe(el);
+
+  });
+
+
+/* =========================================================
+   شروع برنامه
+========================================================= */
+
+loadOrder();
+
+renderOrder();
+
+</script>
+
+</body>
+</html>
+```
